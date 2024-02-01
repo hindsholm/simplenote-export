@@ -43,6 +43,9 @@ public class Main implements Callable<Integer> {
                 writer.newLine();
                 writer.write(note.content());
                 writer.close();
+                if (!outFile.setLastModified(note.lastModified().getTime())) {
+                    System.err.printf("Could not set last modified time of '%s'%n", outFile.getName());
+                }
             }
             System.out.printf("%d notes loaded from %s%n", export.activeNotes().length, jsonFile);
         } catch (IOException e) {
