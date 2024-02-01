@@ -1,4 +1,4 @@
-package dk.hindsholm.dendron;
+package dk.hindsholm.simplenote;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

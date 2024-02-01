@@ -1,4 +1,4 @@
-package dk.hindsholm.dendron;
+package dk.hindsholm.simplenote;
 
 import java.util.Date;
 
@@ -6,17 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record Note(String id, String content, Date creationDate, Date lastModified) {
-
-    public String getFrontmatter() {
-        return """
-            ---
-            id: %s
-            title: %s
-            desc: ''
-            updated: %d
-            created: %d
-            ---""".formatted(id, getTitle(), lastModified.getTime(), creationDate.getTime());
-    }
 
     public String getTitle() {
         return content
@@ -28,8 +17,6 @@ public record Note(String id, String content, Date creationDate, Date lastModifi
         return getTitle()
             .replaceAll("[^\\p{L}\\d ]", " ")   // Only allow letters, digits and spaces
             .trim()
-            .replaceAll("\\s+", "-")
-            .toLowerCase()
             + ".md";
     }
 

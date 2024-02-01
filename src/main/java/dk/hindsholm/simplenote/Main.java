@@ -1,4 +1,4 @@
-package dk.hindsholm.dendron;
+package dk.hindsholm.simplenote;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -14,7 +14,7 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
-@Command(name = "sn2dendron", description = "Generates a set of markdown files from a SimpleNote export json file")
+@Command(name = "simplenote-export", description = "Generates a set of markdown files from a SimpleNote export json file")
 public class Main implements Callable<Integer> {
 
     @Option(names = "-f", description = "JSON input file", required = true)
@@ -39,8 +39,6 @@ public class Main implements Callable<Integer> {
             for (Note note: export.activeNotes()) {
                 File outFile = outDir.resolve(note.getFileName()).toFile();
                 BufferedWriter writer = new BufferedWriter(new FileWriter(outFile));
-                writer.write(note.getFrontmatter());
-                writer.newLine();
                 writer.write(note.content());
                 writer.close();
                 if (!outFile.setLastModified(note.lastModified().getTime())) {

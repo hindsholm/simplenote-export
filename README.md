@@ -1,8 +1,11 @@
-# SimpleNote to Dendron
+# SimpleNote Export Utility
+
+This program generates markdown files with meaningful names and timestamps from a Simplenote export.
+
+Usage:
 
 1. Export your [Simplenote](https://simplenote.com/) notes to a .json file
-2. Generate valid .md files from the notes
-3. Import the .md files in [Dendron](https://www.dendron.so/)
+2. Generate valid .md files from the notes:
 
 ## Building and running
 
